@@ -106,10 +106,9 @@ export default function ButtonAppBar() {
 
                 <div class="modal-words-container">
                   <Box
-                    class="MuiBox-root css-1mtu8i7"
                     p={2}
                     component="span"
-                    sx={{ backgroundColor: "#81c784" }}
+                    sx={{ backgroundColor: "#6fbf73" }}
                   >
                     <Typography sx={{ mt: -0.5 }} variant="h6">
                       B
@@ -189,7 +188,7 @@ export default function ButtonAppBar() {
                   <Box
                     p={2}
                     component="span"
-                    sx={{ backgroundColor: "#e0e0e0" }}
+                    sx={{ backgroundColor: "#bdbdbd" }}
                   >
                     <Typography sx={{ mt: -0.5 }} variant="h6">
                       L
