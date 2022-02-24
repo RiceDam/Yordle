@@ -17,8 +17,9 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: 400,
   borderRadius: 2,
-  bgcolor: "background.paper",
+  bgcolor: "#424242",
   boxShadow: 24,
+  color: "#ffffff",
   p: 4,
 };
 
@@ -72,28 +73,28 @@ export default function HowToPlayModal(props) {
           </Typography>
 
           <div className="modal-words-container">
-            <Box p={2} component="span" sx={{ backgroundColor: "#a5d6a7" }}>
-              <Typography sx={{ mt: -0.5 }} variant="h6">
+            <Box p={2} component="span" sx={{ backgroundColor: "#388e3c" }}>
+              <Typography sx={{ mt: -0.5 }} variant="h5">
                 B
               </Typography>
             </Box>
             <Box p={2} component="span">
-              <Typography sx={{ mt: -0.5 }} variant="h6">
+              <Typography sx={{ mt: -0.5 }} variant="h5">
                 R
               </Typography>
             </Box>
             <Box p={2} component="span">
-              <Typography sx={{ mt: -0.5 }} variant="h6">
+              <Typography sx={{ mt: -0.5 }} variant="h5">
                 A
               </Typography>
             </Box>
             <Box p={2} component="span">
-              <Typography sx={{ mt: -0.5 }} variant="h6">
+              <Typography sx={{ mt: -0.5 }} variant="h5">
                 N
               </Typography>
             </Box>
             <Box p={2} component="span">
-              <Typography sx={{ mt: -0.5 }} variant="h6">
+              <Typography sx={{ mt: -0.5 }} variant="h5">
                 D
               </Typography>
             </Box>
@@ -104,27 +105,27 @@ export default function HowToPlayModal(props) {
 
           <div className="modal-words-container">
             <Box p={2} component="span">
-              <Typography sx={{ mt: -0.5 }} variant="h6">
+              <Typography sx={{ mt: -0.5 }} variant="h5">
                 C
               </Typography>
             </Box>
-            <Box p={2} component="span" sx={{ backgroundColor: "#ffe082" }}>
-              <Typography sx={{ mt: -0.5 }} variant="h6">
+            <Box p={2} component="span" sx={{ backgroundColor: "#ffab00" }}>
+              <Typography sx={{ mt: -0.5 }} variant="h5">
                 O
               </Typography>
             </Box>
             <Box p={2} component="span">
-              <Typography sx={{ mt: -0.5 }} variant="h6">
+              <Typography sx={{ mt: -0.5 }} variant="h5">
                 R
               </Typography>
             </Box>
             <Box p={2} component="span">
-              <Typography sx={{ mt: -0.5 }} variant="h6">
+              <Typography sx={{ mt: -0.5 }} variant="h5">
                 K
               </Typography>
             </Box>
             <Box p={2} component="span">
-              <Typography sx={{ mt: -0.5 }} variant="h6">
+              <Typography sx={{ mt: -0.5 }} variant="h5">
                 I
               </Typography>
             </Box>
@@ -135,27 +136,27 @@ export default function HowToPlayModal(props) {
 
           <div className="modal-words-container">
             <Box p={2} component="span">
-              <Typography sx={{ mt: -0.5 }} variant="h6">
+              <Typography sx={{ mt: -0.5 }} variant="h5">
                 G
               </Typography>
             </Box>
             <Box p={2} component="span">
-              <Typography sx={{ mt: -0.5 }} variant="h6">
+              <Typography sx={{ mt: -0.5 }} variant="h5">
                 A
               </Typography>
             </Box>
-            <Box p={2} component="span" sx={{ backgroundColor: "#eeeeee" }}>
-              <Typography sx={{ mt: -0.5 }} variant="h6">
+            <Box p={2} component="span" sx={{ backgroundColor: "#9e9e9e" }}>
+              <Typography sx={{ mt: -0.5 }} variant="h5">
                 L
               </Typography>
             </Box>
             <Box p={2} component="span">
-              <Typography sx={{ mt: -0.5 }} variant="h6">
+              <Typography sx={{ mt: -0.5 }} variant="h5">
                 I
               </Typography>
             </Box>
             <Box p={2} component="span">
-              <Typography sx={{ mt: -0.5 }} variant="h6">
+              <Typography sx={{ mt: -0.5 }} variant="h5">
                 O
               </Typography>
             </Box>
