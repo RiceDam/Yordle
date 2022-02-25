@@ -1,32 +1,36 @@
-import { useEffect } from 'react';
-import easyWordList from '../word-lists/words-easy.txt';
-import '../css/Game.css';
+import { useEffect } from "react";
+import easyWordList from "../word-lists/words-easy.txt";
+import "../css/Game.css";
 
 function Game() {
-
     useEffect(() => {
         let index = 0;
         let currentRow = 0;
-        let word = "IVERN";
+        let word = "";
         let guess = [];
-        // const pickWord = (list) => {
-        //     const random = Math.floor(Math.random() * list.length);
-        //     word = list[random].toLowerCase();
-        // }
-        // const fetchEasyWords = async () => {
-        //     fetch(easyWordList)
-        //         .then(res => res.text())
-        //         .then(text => {
-        //             const words = text.split('\r\n');
-        //             pickWord(words);
-        //             console.log(word);
-        //         });
-        // }
-        // fetchEasyWords();
-        const count = (str, find) => {
-            return (str.split(find)).length - 1;
+        const pickWord = (list) => {
+            const random = Math.floor(Math.random() * list.length);
+            word = list[random];
+        };
+        const fetchEasyWords = async () => {
+            fetch(easyWordList)
+                .then((res) => res.text())
+                .then((text) => {
+                    const words = text.split("\r\n");
+                    pickWord(words);
+                    console.log(word);
+                });
+        };
+        fetchEasyWords();
+        const findCharPositions = (word, char) => {
+            let positions = [];
+            let pos = word.indexOf(char);
+            while (pos !== -1) {
+                positions.push(pos);
+                pos = word.indexOf(char, pos + 1);
+            }
+            return positions;
         }
-        const countOccurences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);
         const keyDown = (e) => {
             if (!e.repeat) {
                 const pattern = /[a-zA-Z]+/g;
@@ -37,68 +41,59 @@ function Game() {
                         index++;
                         guess.push(e.key.toUpperCase());
                     }
-                } else if (e.key === 'Backspace') {
+                } else if (e.key === "Backspace") {
                     const current = document.getElementById("current");
                     if (index > 0) {
                         index--;
                         current.children[index].innerHTML = "";
                         guess.pop();
                     }
-                } else if (e.key === 'Enter') {
+                } else if (e.key === "Enter") {
                     if (guess.length === 5) {
-                        let answer = guess.join('');
+                        let counted_pos = new Set();
                         const game = document.getElementById("game");
                         const row = game.children[currentRow];
                         row.removeAttribute("id");
+                        for (let i = 0; i < row.children.length; i++) {
+                            row.children[i].classList.add("grey-overlay");
+                        }
                         for (let i = 0; i < guess.length; i++) {
-                            let letter = guess[i];
-                            if (word.includes(letter)) {
-                                if (word.charAt(i) === letter) {
-                                    row.children[i].style.backgroundColor = "#388e3c";
-                                    if (count(answer, letter) > count(word, letter)) {
-                                        for (let j = 0; j < row.childNodes.length; j++) {
-                                            if (row.children[j].innerText === letter && row.children[j].style.backgroundColor === '#ffab00') {
-                                                row.childNodes[j].style.backgroundColor = '#9e9e9e';
-                                                let index = guess.indexOf(letter);
-                                                if (index !== -1) {
-                                                    guess.splice(index, 1);
-                                                }
-                                            }
-                                        }
-                                    }
-                                } else {
-                                    if (countOccurences(guess, letter) <= count(word, letter)) {
-                                        row.children[i].style.backgroundColor = '#ffab00';
-                                        console.log(countOccurences(guess, letter));
-                                    } else {
-                                        row.children[i].style.backgroundColor = '#9e9e9e';
-                                        console.log('grey');
+                            if (word.charAt(i) === guess[i]) {
+                                row.children[i].classList.replace("grey-overlay", "green-overlay");
+                                counted_pos.add(i);
+                            }
+                        }
+                        for (let i = 0; i < guess.length; i++) {
+                            if (word.includes(guess[i]) && !row.children[i].classList.contains("green-overlay")) {
+                                let positions = findCharPositions(word, guess[i]);
+                                for (let pos of positions) {
+                                    if (!counted_pos.has(pos)) {
+                                        row.children[i].classList.replace("grey-overlay", "yellow-overlay");
+                                        counted_pos.add(pos);
+                                        break;
                                     }
                                 }
-                            } else {
-                                row.children[i].style.backgroundColor = '#9e9e9e';
                             }
                         }
                         if (currentRow < game.children.length - 1) {
                             currentRow++;
-                          } else {
+                        } else {
                             document.removeEventListener("keydown", keyDown);
-                          }
-                          const next = game.children[currentRow];
-                          next.setAttribute("id", "current");
-                          guess = [];
-                          index = 0;
+                        }
+                        const next = game.children[currentRow];
+                        next.setAttribute("id", "current");
+                        guess = [];
+                        index = 0;
                     }
                 }
             }
-        }
-        document.addEventListener('keydown', keyDown);
+        };
+        document.addEventListener("keydown", keyDown);
     }, []);
-
 
     return (
         <div>
-            <div id="game" >
+            <div id="game" className="game">
                 <div className="row" id="current">
                     <div className="letter"></div>
                     <div className="letter"></div>

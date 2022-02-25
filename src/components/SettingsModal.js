@@ -38,7 +38,8 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: 400,
   borderRadius: 2,
-  bgcolor: "background.paper",
+  bgcolor: "#424242",
+  color: "#ffffff",
   boxShadow: 24,
   p: 4,
 };

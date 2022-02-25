@@ -1,0 +1,25 @@
+.keyboard-row {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+
+  gap: 10px;
+}
+
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10rem;
+  margin-right: 10rem;
+  gap: 10px;
+}
+
+.keyboard-row-letter,
+.keyboard-row-button {
+  border: 2px solid #616161;
+  border-radius: 2px;
+  padding: 20px;
+  background-color: #616161;
+  color: #ffffff;
+  font-weight: 600;
+}

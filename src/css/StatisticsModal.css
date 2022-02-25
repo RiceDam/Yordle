@@ -1,0 +1,10 @@
+.statistic {
+  width: 20%;
+}
+
+.statistics-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding-left: 20px;
+}
