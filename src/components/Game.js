@@ -50,40 +50,48 @@ function Game() {
                     }
                 } else if (e.key === "Enter") {
                     if (guess.length === 5) {
+                        let answer = guess.join('');
                         let counted_pos = new Set();
                         const game = document.getElementById("game");
                         const row = game.children[currentRow];
                         row.removeAttribute("id");
-                        for (let i = 0; i < row.children.length; i++) {
-                            row.children[i].classList.add("grey-overlay");
-                        }
-                        for (let i = 0; i < guess.length; i++) {
-                            if (word.charAt(i) === guess[i]) {
-                                row.children[i].classList.replace("grey-overlay", "green-overlay");
-                                counted_pos.add(i);
+                        if (word === answer) {
+                            for (let i = 0; i < row.children.length; i++) {
+                                row.children[i].classList.add("green-overlay");
                             }
-                        }
-                        for (let i = 0; i < guess.length; i++) {
-                            if (word.includes(guess[i]) && !row.children[i].classList.contains("green-overlay")) {
-                                let positions = findCharPositions(word, guess[i]);
-                                for (let pos of positions) {
-                                    if (!counted_pos.has(pos)) {
-                                        row.children[i].classList.replace("grey-overlay", "yellow-overlay");
-                                        counted_pos.add(pos);
-                                        break;
+                            document.removeEventListener("keydown", keyDown);
+                        } else {
+                            for (let i = 0; i < row.children.length; i++) {
+                                row.children[i].classList.add("grey-overlay");
+                            }
+                            for (let i = 0; i < guess.length; i++) {
+                                if (word.charAt(i) === guess[i]) {
+                                    row.children[i].classList.replace("grey-overlay", "green-overlay");
+                                    counted_pos.add(i);
+                                }
+                            }
+                            for (let i = 0; i < guess.length; i++) {
+                                if (word.includes(guess[i]) && !row.children[i].classList.contains("green-overlay")) {
+                                    let positions = findCharPositions(word, guess[i]);
+                                    for (let pos of positions) {
+                                        if (!counted_pos.has(pos)) {
+                                            row.children[i].classList.replace("grey-overlay", "yellow-overlay");
+                                            counted_pos.add(pos);
+                                            break;
+                                        }
                                     }
                                 }
                             }
+                            if (currentRow < game.children.length - 1) {
+                                currentRow++;
+                            } else {
+                                document.removeEventListener("keydown", keyDown);
+                            }
+                            const next = game.children[currentRow];
+                            next.setAttribute("id", "current");
+                            guess = [];
+                            index = 0;
                         }
-                        if (currentRow < game.children.length - 1) {
-                            currentRow++;
-                        } else {
-                            document.removeEventListener("keydown", keyDown);
-                        }
-                        const next = game.children[currentRow];
-                        next.setAttribute("id", "current");
-                        guess = [];
-                        index = 0;
                     }
                 }
             }
