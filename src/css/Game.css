@@ -7,8 +7,8 @@
 }
 
 .letter {
-  height: 64px;
-  width: 64px;
+  aspect-ratio: 1 / 1;
+  width: 6%;
   border: 2px solid #616161;
   border-radius: 2px;
   display: flex;
@@ -29,8 +29,10 @@
 }
 
 .game {
-  margin-top: 4rem;
-  margin-bottom: 3rem;
+  margin-top: 5vh;
+  margin-bottom: 2vh;
+  margin-left: 20vw;
+  margin-right: 20vw;
 }
 
 .green-overlay {
