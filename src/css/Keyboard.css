@@ -2,17 +2,15 @@
   display: flex;
   justify-content: center;
   flex-direction: row;
-
   gap: 10px;
 }
 
 .keyboard {
   display: flex;
   flex-direction: column;
-  margin-left: 20vw;
-  margin-right: 20vw;
+  margin-left: 30vw;
+  margin-right: 30vw;
   gap: 10px;
-  margin-bottom: 10vh;
 }
 
 .keyboard-row-letter {
@@ -23,6 +21,7 @@
 .keyboard-row-button {
   display: flex;
   justify-content: center;
+  flex: 1 1 0;
   align-items: center;
   border: 2px solid #616161;
   border-radius: 2px;
