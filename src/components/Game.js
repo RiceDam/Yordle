@@ -63,11 +63,15 @@ function Game() {
                         } else {
                             for (let i = 0; i < row.children.length; i++) {
                                 row.children[i].classList.add("grey-overlay");
+                                const keyboardLetter = document.getElementById(guess[i]);
+                                keyboardLetter.classList.add("grey-overlay");
                             }
                             for (let i = 0; i < guess.length; i++) {
                                 if (word.charAt(i) === guess[i]) {
                                     row.children[i].classList.replace("grey-overlay", "green-overlay");
                                     counted_pos.add(i);
+                                    const keyboardLetter = document.getElementById(guess[i]);
+                                    keyboardLetter.classList.replace("grey-overlay", "green-overlay");
                                 }
                             }
                             for (let i = 0; i < guess.length; i++) {
@@ -77,6 +81,8 @@ function Game() {
                                         if (!counted_pos.has(pos)) {
                                             row.children[i].classList.replace("grey-overlay", "yellow-overlay");
                                             counted_pos.add(pos);
+                                            const keyboardLetter = document.getElementById(guess[i]);
+                                            keyboardLetter.classList.replace("grey-overlay", "yellow-overlay");
                                             break;
                                         }
                                     }
